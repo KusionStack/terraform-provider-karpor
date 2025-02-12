@@ -1,0 +1,28 @@
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test binary
+*.test
+
+# Output
+terraform-provider-karpor
+
+# IDE
+.vscode/
+.idea/
+
+# Dependency directories
+vendor/
+
+# Terraform
+.terraform.lock.hcl
+.terraform/
+
+# Logs
+*.log
+
+# System
+.DS_Store
