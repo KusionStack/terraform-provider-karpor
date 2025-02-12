@@ -1,12 +1,12 @@
+![OSP](https://socialify.git.ci/KusionStack/terraform-provider-karpor/image?font=Raleway&language=1&name=1&owner=1&pattern=Plus&theme=Light)
+
 # Terraform Provider for Karpor
 
 A Terraform provider for managing cluster registration in Karpor
 
 ## Features
 
-- ✅ Cluster Registration Management (`karpor_cluster_registration`)
-- ⏳ Cluster Health Monitoring (Under Development)
-- ⏳ Multi-Credential Support (Under Development)
+- Cluster Registration Management (`karpor_cluster_registration`)
 
 ## Installation
 
