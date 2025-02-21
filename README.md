@@ -36,7 +36,6 @@ provider "karpor" {
 ```hcl
 resource "karpor_cluster_registration" "production" {
   cluster_name    = "production-cluster"
-  api_server_url  = "https://k8s.example.com"
   credentials     = file("~/.kube/config")
   description     = "Primary production cluster"
 }
@@ -58,7 +57,7 @@ make testacc  # Run acceptance tests (requires API credentials)
 ### Test Configuration
 Set environment variables before testing:
 ```bash
-export KARPOR_ENDPOINT="https://api.karpor.example.com"
+export KARPOR_API_ENDPOINT="https://api.karpor.example.com"
 export KARPOR_API_KEY="your-api-key"
 ```
 
