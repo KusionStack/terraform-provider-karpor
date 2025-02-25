@@ -6,7 +6,7 @@
 # @global-owner1 and @global-owner2 will be requested for
 # review when someone opens a pull request.
 # * @global-owner1 @global-owner2
-* @elliotxx @adohe @ffforest @ruquanzhao @fanfan-yu
+* @elliotxx @adohe @ffforest @fanfan-yu @jinjiaKarl
 # Order is important; the last matching pattern takes the most
 # precedence. When someone opens a pull request that only
 # modifies JS files, only @js-owner and not the global
@@ -23,13 +23,13 @@
 # explicit write access to the repository. In this example,
 # the octocats team in the octo-org organization owns all .txt files.
 # *.txt @octo-org/octocats
-*.go @elliotxx @adohe @ffforest @ruquanzhao @fanfan-yu
+*.go @elliotxx @adohe @ffforest @fanfan-yu @jinjiaKarl
 
 # In this example, @doctocat owns any files in the build/logs
 # directory at the root of the repository and any of its
 # subdirectories.
 # /build/logs/ @doctocat
-/.github/ @elliotxx @adohe @ffforest @ruquanzhao @fanfan-yu
+/.github/ @elliotxx @adohe @ffforest @fanfan-yu @jinjiaKarl
 
 # The `docs/*` pattern will match files like
 # `docs/getting-started.md` but not further nested files like
