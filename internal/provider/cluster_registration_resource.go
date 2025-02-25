@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
@@ -15,8 +16,9 @@ import (
 
 // Ensure the implementation satisfies the expected interfaces.
 var (
-	_ resource.Resource              = &ClusterRegistrationResource{}
-	_ resource.ResourceWithConfigure = &ClusterRegistrationResource{}
+	_ resource.Resource                = &ClusterRegistrationResource{}
+	_ resource.ResourceWithConfigure   = &ClusterRegistrationResource{}
+	_ resource.ResourceWithImportState = &ClusterRegistrationResource{}
 )
 
 // NewClusterRegistrationResource returns a new resource.Resource.
@@ -47,6 +49,7 @@ func (r *ClusterRegistrationResource) Metadata(_ context.Context, req resource.M
 // Schema returns the resource schema.
 func (r *ClusterRegistrationResource) Schema(_ context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		Description: "Manage cluster registration",
 		Attributes: map[string]schema.Attribute{
 			"cluster_name": schema.StringAttribute{
 				Required:    true,
@@ -60,7 +63,7 @@ func (r *ClusterRegistrationResource) Schema(_ context.Context, _ resource.Schem
 				Description: "Human-readable display name",
 			},
 			"credentials": schema.StringAttribute{
-				Required:    true,
+				Optional:    true,
 				Sensitive:   true,
 				Description: "Path to kubeconfig file",
 				PlanModifiers: []planmodifier.String{
@@ -143,6 +146,7 @@ func (c *ClusterRegistrationResource) Read(ctx context.Context, req resource.Rea
 
 	// Overwrite items with refreshed state
 	state.ClusterName = remoteState.ClusterName
+	state.DisplayName = remoteState.DisplayName
 	state.Description = remoteState.Description
 	state.Id = remoteState.Id
 
@@ -212,6 +216,12 @@ func (c *ClusterRegistrationResource) Delete(ctx context.Context, req resource.D
 		)
 		return
 	}
+}
+
+// ImportState imports the resource.
+func (c *ClusterRegistrationResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
+	// Terraform will automatically call the resource's Read method to import the rest of the Terraform state
+	resource.ImportStatePassthroughID(ctx, path.Root("cluster_name"), req, resp)
 }
 
 // Configure configures the resource.

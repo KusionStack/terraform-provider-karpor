@@ -43,6 +43,7 @@ func (p *KarporProvider) Metadata(_ context.Context, _ provider.MetadataRequest,
 // Schema returns the provider schema.
 func (p *KarporProvider) Schema(_ context.Context, _ provider.SchemaRequest, resp *provider.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		Description: "Interact with Karpor",
 		Attributes: map[string]schema.Attribute{
 			"api_endpoint": schema.StringAttribute{
 				Optional:    true,

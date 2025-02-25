@@ -41,6 +41,7 @@ func (d *ClusterDataSource) Metadata(ctx context.Context, req datasource.Metadat
 // Schema returns the schema for the datasource.
 func (d *ClusterDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		Description: "Get cluster information",
 		Attributes: map[string]schema.Attribute{
 			"cluster_name": schema.StringAttribute{
 				Required: true,
